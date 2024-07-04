@@ -1,8 +1,12 @@
 import "./NavBar.css";
 import logo from "../assets/logo.png";
 import cart_icon from "../assets/cart_icon.png";
+import { useState } from "react";
 
 function NavBar() {
+  /* const [nombreDeVariable, function modificadorDeVariable] = useState(calorInicialdelaVariable) 
+    La convencion es que la funcion modificadora de la variable se le anteponfa un set más el nombre de variable en, camelCase*/
+  const [menu, setMenu] = useState("tienda");
   return (
     <div className="navbar">
       <div className="nav-logo">
@@ -11,10 +15,24 @@ function NavBar() {
         <p>Mi tienda en linea</p>
       </div>
       <ul className="nav-menu">
-        <li>Tienda</li>
-        <li>Hombre</li>
-        <li>Mujer</li>
-        <li>Niños</li>
+        <li onClick={() => setMenu("tienda")}>
+          Tienda
+          {/* sintaxis de operador ternario: evaluador ? siCumpleConsicion : SiNocumple */}
+          {/* sintaxis de operador AND: evaluador && siCumpleCondicion */}
+          {menu === "tienda" ? <hr /> : <></>}
+        </li>
+        <li onClick={() => setMenu("hombre")}>
+          Hombre
+          {menu === "hombre" && <hr />}
+        </li>
+        <li onClick={() => setMenu("mujer")}>
+          Mujer
+          {menu === "mujer" && <hr />}
+        </li>
+        <li onClick={() => setMenu("niños")}>
+          Niños
+          {menu === "niños" && <hr />}
+        </li>
       </ul>
       <div className="nav-login-cart">
         <button>Login</button>
